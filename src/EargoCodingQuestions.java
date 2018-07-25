@@ -1,5 +1,6 @@
 public class EargoCodingQuestions {
     public static void main(String args[]){
+//        inputs from the example
         System.out.println("Question 1");
         printArr(findChange(83));
         System.out.println("Question 2");
@@ -7,21 +8,30 @@ public class EargoCodingQuestions {
         buyStock(stocks);
     }
 
-//    Code for question 1
-    public static int[] findChange(int totalCents){
-        int[] coinVals = {25, 10, 5, 1};
-        int[] result = new int[4];
-        int i = 0;
-        while(totalCents != 0){
-            result[i] = totalCents/coinVals[i];
-            totalCents = totalCents%coinVals[i];
-            i+=1;
+    /**
+     * Code for question 1.
+     */
+    public static int[] findChange(int totalCents) {
+        if (totalCents < 0) {
+            throw new RuntimeException();
         }
-        return result;
+        else {
+            int[] coinVals = {25, 10, 5, 1};
+            int[] result = new int[4];
+            int i = 0;
+            while (totalCents != 0) {
+                result[i] = totalCents / coinVals[i];
+                totalCents = totalCents % coinVals[i];
+                i += 1;
+            }
+            return result;
+        }
     }
 
-//    Code for question 2
-    public static void buyStock(int[] stocks){
+    /**
+     * Code for question 2.
+     */
+        public static int[] buyStock(int[] stocks){
         int min = Integer.MAX_VALUE;
         int maxProfit = 0;
         int minIndex = 0;
@@ -37,9 +47,13 @@ public class EargoCodingQuestions {
             }
         }
         System.out.println("Buy on day: " + (minIndex+1) + "\n" + "Sell on day: " + (maxIndex+1) + "\n" + "For a profit of: " + maxProfit);
+        int[] result = {minIndex+1, maxIndex+1, maxProfit};
+        return result;
     }
 
-
+    /**
+     * Function to print array.
+     */
     public static void printArr(int[] arr){
         for(int i = 0; i < arr.length; i++){
             System.out.println(arr[i]);
